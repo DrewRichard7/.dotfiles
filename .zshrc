@@ -15,6 +15,21 @@ alias fd='fzf'
 shrc() { (cd ~/.dotfiles/ && nvim .zshrc); }
 rez() { source ~/.dotfiles/.zshrc && echo ".zshrc reloaded" && sleep 0.25 && clear; }
 
+envrc() {
+    if [[ -f .envrc ]]; then
+        echo ".envrc exists"
+    else
+        echo "source .venv/bin/activate" >>.envrc
+    fi
+}
+
+archive-dotfiles() {
+    if [[ -d ~/.dotfiles/ ]]; then
+        (cd ~/.dotfiles && git add . && git commit -m "automated archiving commit" && git push origin main)
+    else
+        mkdir -p ~/.dotfiles && echo ".dotfiles directory created. you need to create github ssh credentials and clone .dotfiles from DrewRichard7"
+    fi
+}
 
 # ~/.zshrc
 eval "$(direnv hook zsh)"
