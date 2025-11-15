@@ -1,0 +1,5 @@
+[global]
+bash_path= "/bin/zsh"
+
+[whitelist]
+prefix = ["/Users/andrew/dev/"]

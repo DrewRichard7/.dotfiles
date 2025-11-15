@@ -1,0 +1,36 @@
+# Dynamic theme colors
+# config-file = ?"~/.config/omarchy/current/theme/ghostty.conf"
+
+background-opacity = 0.80
+background-blur-radius = 20
+
+# theme
+theme = Wez
+
+# Font
+font-family = "Lilex"
+font-style = Regular
+font-size = 16
+
+# Window
+window-padding-x = 14
+window-padding-y = 14
+confirm-close-surface=false
+resize-overlay = never
+macos-titlebar-style = hidden
+window-padding-y = 10,4
+window-padding-x = 15,5
+window-position-y = 500
+window-save-state = always
+
+
+# Cursor styling
+cursor-style = "block"
+cursor-style-blink = false
+shell-integration-features = no-cursor
+
+# Keyboard bindings
+keybind = f11=toggle_fullscreen
+
+# other
+copy-on-select = clipboard
