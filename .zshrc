@@ -11,7 +11,6 @@ alias tw='taskwarrior-tui'
 alias tl='task list'
 alias claer='clear'
 alias cl='clear'
-alias n='nvim'
 alias fd='fzf'
 
 # functions
@@ -52,6 +51,18 @@ archive-dotfiles() {
         mkdir -p ~/.dotfiles
         echo ".dotfiles directory created. you need to create github ssh credentials and clone .dotfiles from ham-munculus"
     fi
+}
+
+open() {
+  xdg-open "$@" >/dev/null 2>&1 &
+}
+
+n() {
+  if [ "$#" -eq 0 ]; then
+    nvim .
+  else
+    nvim "$@"
+  fi
 }
 
 # ~/.zshrc
