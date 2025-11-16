@@ -65,6 +65,13 @@ n() {
   fi
 }
 
+
+# Make completion case-insensitive
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+# Only ask if there are more than N matches
+LISTMAX=200
+setopt COMPLETE_IN_WORD    # allow completion in the middle of a word
+
 # ~/.zshrc
 eval "$(direnv hook zsh)"
 eval "$(zoxide init zsh)"
