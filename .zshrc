@@ -2,8 +2,11 @@ export EDITOR=nvim
 
 # aliases
 alias cd="z"
-alias ls='eza --long --icons=always --color=always --git'
-alias lsa='eza --all --color=always --long --icons=always --git'
+alias ls='eza -lh --group-directories-first --git --icons=auto'
+alias lsa='ls -a'
+alias lt='eza --tree --level=2 --long --icons --git'
+alias lta='lt -a'
+alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
 alias tw='taskwarrior-tui'
 alias tl='task list'
 alias claer='clear'
@@ -25,9 +28,29 @@ envrc() {
 
 archive-dotfiles() {
     if [[ -d ~/.dotfiles/ ]]; then
-        (cd ~/.dotfiles && git add . && git commit -m "automated archiving commit" && git push origin main)
+        (
+            cd ~/.dotfiles || exit 1
+
+            git add .
+
+            changed_files=$(git diff --cached --name-only)
+
+            if [[ -z "$changed_files" ]]; then
+                echo "No changes to commit"
+                exit 0
+            fi
+
+            # turn newlines into commas for the commit
+            changed_files_inline=$(echo "$changed_files" | tr '\n' ',' | sed 's/,$//')
+
+            git commit -m "Automated archiving commit: $changed_files_inline"
+
+            git push origin main
+        )
+
     else
-        mkdir -p ~/.dotfiles && echo ".dotfiles directory created. you need to create github ssh credentials and clone .dotfiles from DrewRichard7"
+        mkdir -p ~/.dotfiles
+        echo ".dotfiles directory created. you need to create github ssh credentials and clone .dotfiles from ham-munculus"
     fi
 }
 
