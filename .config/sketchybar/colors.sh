@@ -73,4 +73,7 @@ fi
 export ACCENT_COLOR=$(to_hex 255 $r $g $b)
 
 # Bar background (subtle, dark-ish)
-export BAR_BG_COLOR=0x20000000
+# export BAR_BG_COLOR=0x20000000
+# export BAR_BG_COLOR=0x80000000
+# export BAR_BG_COLOR=0x80003344
+export BAR_BG_COLOR=0xF2181A20
