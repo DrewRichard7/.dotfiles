@@ -2,7 +2,7 @@
 # config-file = ?"~/.config/omarchy/current/theme/ghostty.conf"
 
 background-opacity = 0.80
-background-blur-radius = 20
+background-blur = 20
 
 # theme
 theme = Wez
