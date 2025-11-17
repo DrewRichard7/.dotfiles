@@ -1,7 +1,7 @@
 # Dynamic theme colors
 # config-file = ?"~/.config/omarchy/current/theme/ghostty.conf"
 
-background-opacity = 0.80
+background-opacity = 0.90
 background-blur = 20
 
 # theme
