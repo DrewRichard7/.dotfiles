@@ -45,7 +45,7 @@ sketchybar --default "${default[@]}"
 ## note above is from previous config
 # Workspaces you want to show in the bar.
 # Adjust this list to match your actual Hyprspace workspace names/ids.
-SPACE_IDS=("1" "2" "3" "4" "5" "6" "7" "8" "9" "10")
+SPACE_IDS=("1" "2" "3" "4" "5" "6" "7" "8" "9")
 
 for sid in "${SPACE_IDS[@]}"; do
   space=(
@@ -57,11 +57,7 @@ for sid in "${SPACE_IDS[@]}"; do
     background.height=25
     background.drawing=off
     label.drawing=off
-
-    # Click to focus Hyprspace workspace
     click_script="hyprspace workspace $sid"
-
-    # This script reacts to `hyprspace_workspace_change` events
     script="$PLUGIN_DIR/hyprspace_space.sh $sid"
   )
 
