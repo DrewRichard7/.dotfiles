@@ -57,6 +57,7 @@ vim.opt.smartindent = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.incsearch = true
+vim.g.lazyvim_picker = "snacks"
 
 -- Clipboard & splits
 -- vim.opt.clipboard:append("unnamedplus")

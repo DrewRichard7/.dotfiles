@@ -12,12 +12,16 @@ return {
         enabled = false,
       },
       picker = {
-        hidden = true,
-        ignored = true,
+        -- global defaults for all pickers
+        hidden = true, -- include dotfiles
+        ignored = false, -- do NOT respect .gitignore / .ignore
+        exclude = {}, -- no extra excludes
         sources = {
-          file = {
+          -- this must be "files", not "file"
+          files = {
             hidden = true,
-            ignored = true,
+            ignored = false,
+            exclude = {},
           },
         },
       },
