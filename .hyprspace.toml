@@ -23,10 +23,15 @@ start-at-login = true
 after-startup-command = [
     'workspace 1',
     'layout dwindle',
-    'exec-and-forget borders'
+    'exec-and-forget borders',
+    'exec-and-forget sketchybar'
 ]
 
-
+exec-on-workspace-change = [
+    "/bin/bash",
+    "-c",
+    "sketchybar --trigger hyprspace_workspace_change FOCUSED_WORKSPACE=$HYPRSPACE_FOCUSED_WORKSPACE"
+]
 
 # ╔═══════════════════════════════════════════════════════════════════════════════╗
 # ║                            DEFAULT LAYOUT SETTINGS                            ║
@@ -165,7 +170,7 @@ inner.vertical = 6
 outer.left = 4
 outer.bottom = 4
 outer.top = [
-  { monitor."DELL U2723QE" = 5 },
+  { monitor."DELL U2723QE" = 37 },
   { monitor."Built-in Retina Display" = 5 },
   25,
 ]

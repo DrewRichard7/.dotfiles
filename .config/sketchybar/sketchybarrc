@@ -5,6 +5,9 @@
 
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 
+# This defines an event name SketchyBar can subscribe to.
+sketchybar --add event hyprspace_workspace_change
+
 ##### Bar Appearance #####
 # Configuring the general appearance of the bar.
 # These are only some of the options available. For all options see:
@@ -52,7 +55,7 @@ do
     background.height=25
     label.drawing=off
     script="$PLUGIN_DIR/space.sh"
-    click_script="yabai -m space --focus $sid"
+    click_script="hyprspace workspace $sid"
   )
   sketchybar --add space space."$sid" left --set space."$sid" "${space[@]}"
 done
