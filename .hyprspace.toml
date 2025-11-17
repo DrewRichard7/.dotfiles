@@ -30,7 +30,7 @@ after-startup-command = [
 exec-on-workspace-change = [
     "/bin/bash",
     "-c",
-    "sketchybar --trigger hyprspace_workspace_change FOCUSED_WORKSPACE=$HYPRSPACE_FOCUSED_WORKSPACE"
+    "sketchybar --trigger hyprspace_workspace_change"
 ]
 
 # ╔═══════════════════════════════════════════════════════════════════════════════╗

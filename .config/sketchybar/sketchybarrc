@@ -41,6 +41,8 @@ sketchybar --default "${default[@]}"
 # https://felixkratz.github.io/SketchyBar/config/components#space----associate-mission-control-spaces-with-an-item
 # to indicate active and available mission control spaces.
 
+
+## note above is from previous config
 # Workspaces you want to show in the bar.
 # Adjust this list to match your actual Hyprspace workspace names/ids.
 SPACE_IDS=("1" "2" "3" "4" "5" "6" "7" "8" "9" "10")
