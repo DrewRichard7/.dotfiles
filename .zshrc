@@ -65,6 +65,13 @@ n() {
   fi
 }
 
+nvimrc() {
+    (cd ~/.dotfiles/.config/nvim/
+
+    n .
+);
+}
+
 
 # Make completion case-insensitive
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'

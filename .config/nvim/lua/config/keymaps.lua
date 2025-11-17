@@ -11,6 +11,21 @@ local floating = require("utils.floating-windows")
 vim.api.nvim_create_user_command("BottomTerm", floating.toggle_bottom_terminal, {})
 vim.api.nvim_create_user_command("Messages", floating.show_messages, {})
 
+-- vim.opt.number = true
+-- vim.opt.relativenumber = true
+map("n", "<c-s-3>", function()
+  local number = vim.wo.number
+  local relativenumber = vim.wo.relativenumber
+
+  if number or relativenumber then
+    vim.wo.number = false
+    vim.wo.relativenumber = false
+  else
+    vim.wo.number = true
+    vim.wo.relativenumber = true
+  end
+end, "Toggle relative and absolute numbers")
+
 -- map("n", "<leader>\\", floating.toggle_floating_terminal, "toggle floating terminal")
 -- map("i", "<leader>\\", floating.toggle_floating_terminal, "toggle floating terminal")
 -- map("t", "<leader>\\", floating.toggle_floating_terminal, "toggle floating terminal")

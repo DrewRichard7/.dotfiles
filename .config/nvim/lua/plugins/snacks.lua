@@ -8,6 +8,9 @@ return {
       indent = {
         enabled = false,
       },
+      input = {
+        enabled = false,
+      },
       picker = {
         hidden = true,
         ignored = true,

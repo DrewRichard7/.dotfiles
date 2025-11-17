@@ -33,8 +33,8 @@ vim.g.mapleader = " "
 -- vim.g.maplocalleader = " "
 
 -- Display
-vim.opt.number = true
-vim.opt.relativenumber = true
+vim.opt.number = true -- can be toggled with <c-s-3>
+vim.opt.relativenumber = true -- can be toggled with <c-s-3>
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 vim.opt.sidescrolloff = 8
