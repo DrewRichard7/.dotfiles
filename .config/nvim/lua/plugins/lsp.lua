@@ -2,29 +2,51 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = function(_, opts)
-      -- Start with lazyvim defaults
       opts = opts or {}
       opts.servers = opts.servers or {}
 
-      --2 merge custom server config on top
+      -- Lua
       opts.servers.lua_ls = opts.servers.lua_ls or {}
-      opts.servers.pyright = opts.servers.pyright or {}
-      opts.servers.ruff = opts.servers.ruff or {}
+
+      -- BasedPyright for type checking
+      opts.servers.basedpyright = {
+        settings = {
+          basedpyright = {
+            analysis = {
+              typeCheckingMode = "standard",
+              -- Ruff will do unused checks; silence these in BasedPyright
+              reportUnusedImport = "none",
+              reportUnusedVariable = "none",
+            },
+          },
+        },
+      }
+
+      -- Ruff LSP for linting diagnostics
+      opts.servers.ruff = {
+        init_options = {
+          settings = {
+            args = {
+              "--line-length=88",
+              "--select=E,F,I,B,UP,SIM,ARG",
+            },
+          },
+        },
+      }
+
       opts.servers.jsonls = opts.servers.jsonls or {}
       opts.servers.yamlls = opts.servers.yamlls or {}
       opts.servers.rust_analyzer = opts.servers.rust_analyzer or {}
 
-      -- remove lazyvim's 'gr' lsp keymap which interferes with neovim's defautl globals
+      -- keep your “remove gr keymap” logic if you still want it:
       opts.servers["*"] = opts.servers["*"] or {}
       local keys = opts.servers["*"].keys or {}
-
       local filtered = {}
       for _, key in ipairs(keys) do
         if key[1] ~= "gr" then
           table.insert(filtered, key)
         end
       end
-
       opts.servers["*"].keys = filtered
 
       return opts
@@ -34,8 +56,9 @@ return {
     "mason-org/mason.nvim",
     opts = {
       ensure_installed = {
-        "stylua", -- formatter only
-        -- other tools that aren't LSP servers
+        "stylua",
+        "ruff",
+        "basedpyright",
       },
     },
   },

@@ -44,3 +44,5 @@ export PATH="$HOME/.config/scripts:$PATH"
 eval "$(direnv hook bash)"
 . "$HOME/.local/share/../bin/env"
 . "$HOME/.cargo/env"
+
+. "$HOME/.local/bin/env"

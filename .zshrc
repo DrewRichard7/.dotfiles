@@ -1,7 +1,9 @@
 export EDITOR=nvim
+export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 
 # aliases
-alias cd="z"
+# alias cd="z"
 alias ls='eza -lh --group-directories-first --git --icons=auto'
 alias lsa='ls -a'
 alias lt='eza --tree --level=2 --long --icons --git'
@@ -12,6 +14,7 @@ alias tl='task list'
 alias claer='clear'
 alias cl='clear'
 alias fd='fzf'
+alias python='python3'
 
 # functions
 shrc() { (cd ~/.dotfiles/ && nvim .zshrc); }
@@ -86,3 +89,5 @@ eval "$(starship init zsh)"
 eval "$(fzf --zsh)"
 
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+. "$HOME/.local/bin/env"

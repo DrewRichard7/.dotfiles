@@ -1,0 +1,120 @@
+#!/usr/bin/env sh
+
+CONFIG_DIR="$HOME/.config/sketchybar"
+SCRIPT_DIR="$CONFIG_DIR/scripts"
+
+source "$CONFIG_DIR/colors.sh"
+
+# === Bar appearance ===
+sketchybar --bar \
+    position=top \
+    height=25 \
+    blur_radius=40 \
+    y_offset=4 \
+    margin=12 \
+    corner_radius=12 \
+    padding_left=0 \
+    padding_right=0 \
+    color=$BAR_BG_COLOR \
+    border_color=0x20FFFFFF \
+    border_width=1 \
+    shadow=on \
+    shadow.color=0x80000000 \
+    shadow.distance=8 \
+    shadow.angle=270
+
+# === Default item properties ===
+sketchybar --default \
+    padding_left=5 \
+    padding_right=5 \
+    icon.font="Lilex Nerd Font:14.0" \
+    label.font="Lilex Nerd Font:12.0" \
+    icon.color=$WHITE \
+    label.color=$WHITE \
+    icon.padding_left=8 \
+    icon.padding_right=4 \
+    label.padding_left=4 \
+    label.padding_right=8 \
+    background.color=$ITEM_BG_COLOR \
+    background.corner_radius=5 \
+    background.height=20
+
+# === Events ===
+sketchybar --add event hyprspace_workspace_change
+
+# === LEFT SIDE ===
+
+# Workspaces 1–10 via Hyprspace
+for sid in 1 2 3 4 5 6 7 8 9; do
+    sketchybar --add item space.$sid left \
+        --set space.$sid \
+        icon="$sid" \
+        icon.font="Lilex Nerd Font:14.0" \
+        icon.padding_left=6 \
+        icon.padding_right=6 \
+        label.drawing=off \
+        background.drawing=off \
+        background.corner_radius=6 \
+        background.height=22 \
+        click_script="hyprspace workspace $sid" \
+        script="$SCRIPT_DIR/hyprspace_workspaces.sh $sid" \
+        --subscribe space.$sid hyprspace_workspace_change
+done
+
+# Separator
+sketchybar --add item space_separator left \
+    --set space_separator \
+    icon="" \
+    icon.font="Lilex Nerd Font:14.0" \
+    icon.color=$ACCENT_COLOR \
+    icon.padding_left=4 \
+    label.drawing=off \
+    background.drawing=off
+
+# Front app
+sketchybar --add item front_app left \
+    --set front_app \
+    icon.drawing=off \
+    label.padding_left=8 \
+    label.padding_right=8 \
+    background.corner_radius=8 \
+    background.color=$ITEM_BG_COLOR \
+    label.color=$LABEL_COLOR \
+    script="$SCRIPT_DIR/front_app.sh" \
+    --subscribe front_app front_app_switched
+
+# === RIGHT SIDE ===
+
+# Calendar / time
+sketchybar --add item calendar right \
+    --set calendar \
+    update_freq=30 \
+    icon.drawing=off \
+    background.color=0x00000000 \
+    script="$SCRIPT_DIR/calendar.sh"
+
+# Battery
+sketchybar --add item battery right \
+    --set battery \
+    update_freq=60 \
+    background.color=0x00000000 \
+    script="$SCRIPT_DIR/battery.sh" \
+    --subscribe battery system_woke power_source_change
+
+# CPU
+sketchybar --add item cpu right \
+    --set cpu \
+    update_freq=2 \
+    icon="󰍛" \
+    background.color=0x00000000 \
+    script="$SCRIPT_DIR/cpu.sh"
+
+# Volume
+sketchybar --add item volume right \
+    --set volume \
+    background.color=0x00000000 \
+    script="$SCRIPT_DIR/volume.sh" \
+    --subscribe volume volume_change
+
+# Run all scripts once
+sketchybar --update
