@@ -1,11 +1,14 @@
 # Dynamic theme colors
 # config-file = ?"~/.config/omarchy/current/theme/ghostty.conf"
 
-background-opacity = 0.90
+background-opacity = 0.95
 background-blur = 20
 
 # theme
-theme = Wez
+# theme = Wez
+# background = "#090B10"
+# theme = Rose Pine
+theme = black-diamond
 
 # Font
 font-family = "Lilex"
@@ -13,6 +16,7 @@ font-style = Regular
 font-size = 12
 
 # Window
+window-theme = ghostty
 window-padding-x = 14
 window-padding-y = 14
 confirm-close-surface=false
