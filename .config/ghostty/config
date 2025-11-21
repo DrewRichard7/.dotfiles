@@ -6,9 +6,12 @@ background-blur = 20
 
 # theme
 # theme = Wez
-# background = "#090B10"
-# theme = Rose Pine
-theme = black-diamond
+background = "#090B10"
+theme = Rose Pine
+# theme = black-diamond
+# theme = Kanagawa Wave
+
+# background = "#11121D"
 
 # Font
 font-family = "Lilex"
