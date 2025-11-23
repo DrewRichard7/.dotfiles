@@ -15,10 +15,11 @@ alias claer='clear'
 alias cl='clear'
 alias fd='fzf'
 alias python='python3'
+alias ei='exit'
 
 # functions
 shrc() { (cd ~/.dotfiles/ && nvim .zshrc); }
-rez() { source ~/.dotfiles/.zshrc && echo ".zshrc reloaded" && sleep 0.25 && clear; }
+resh() { source ~/.dotfiles/.zshrc && echo ".zshrc reloaded" && sleep 0.25 && clear; }
 
 envrc() {
     if [[ -f .envrc ]]; then
@@ -74,6 +75,14 @@ nvimrc() {
     n .
 );
 }
+
+ghosttyrc() {
+    (cd ~/.dotfiles/.config/ghostty/
+
+    n config
+);
+}
+
 
 
 # Make completion case-insensitive

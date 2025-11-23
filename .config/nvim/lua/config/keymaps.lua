@@ -100,7 +100,7 @@ map("t", "<Esc><Esc>", "<C-\\><C-n>", "Exit terminal mode")
 -- File explorer
 -- map("n", "\\", ":Explore<CR>", "Open file explorer") -- disabled for localleader reasons
 -- map("n", "<leader>e", ":Explore<CR>", "Open file explorer")
-
+map("n", ":E", ":Explore", "Open netrw explorer")
 -- Delete marks
 map("n", "<leader>dm", function()
   vim.cmd("delmarks!")
