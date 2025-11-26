@@ -1,30 +1,37 @@
-return {
-  {
-    "folke/snacks.nvim",
-    opts = {
-      explorer = {
-        enabled = false,
-      },
-      indent = {
-        enabled = false,
-      },
-      input = {
-        enabled = false,
-      },
-      picker = {
-        -- global defaults for all pickers
-        hidden = true, -- include dotfiles
-        ignored = false, -- do NOT respect .gitignore / .ignore
-        exclude = {}, -- no extra excludes
-        sources = {
-          -- this must be "files", not "file"
-          files = {
-            hidden = true,
-            ignored = false,
-            exclude = {},
-          },
-        },
-      },
-    },
-  },
-}
+-- lua/plugins/snacks.lua
+require("snacks").setup({
+	picker = {
+		hidden = true, -- Show hidden files in picker
+		ignored = true, -- show git ignored
+		sources = {
+			file = {
+				hidden = true, -- Show hidden files in file picker
+				ignored = true, -- show git ignored
+				exclude = { ".venv", ".git", "**/.git/*", "**/.venv/*" },
+			},
+		},
+		matcher = {
+			frecency = true,
+		},
+	},
+	explorer = {
+		replace_netrw = false,
+		hidden = true, -- show hidden
+		ignored = false, -- show git ignored
+		layout = { preview = true },
+	},
+	zen = {
+		center = true,
+		show = {
+			statusline = false,
+		},
+		backdrop = {
+			enabled = true,
+		},
+		win = {
+			backdrop = {
+				blend = 20,
+			},
+		},
+	},
+})

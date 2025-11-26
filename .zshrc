@@ -1,6 +1,7 @@
 export EDITOR=nvim
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
+export PATH="$HOME/Applications/nvim-macos-arm64/bin:$PATH"
 
 # aliases
 # alias cd="z"
