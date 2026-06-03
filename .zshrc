@@ -1,7 +1,8 @@
 export EDITOR=nvim
 export PATH="$HOME/bin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
-export PATH="$HOME/Applications/nvim-macos-arm64/bin:$PATH"
+# export PATH="$HOME/Applications/nvim-macos-arm64/bin:$PATH"
 
 # aliases
 # alias cd="z"
@@ -17,11 +18,15 @@ alias cl='clear'
 alias fd='fzf'
 alias python='python3'
 alias ei='exit'
+alias gs='git status'
+alias gss='git status --short'
 
 # functions
 shrc() { (cd ~/.dotfiles/ && nvim .zshrc); }
 resh() { source ~/.dotfiles/.zshrc && echo ".zshrc reloaded" && sleep 0.25 && clear; }
-
+gc() {
+    git commit -m "$*"
+}
 envrc() {
     if [[ -f .envrc ]]; then
         echo ".envrc exists"
@@ -84,6 +89,10 @@ ghosttyrc() {
 );
 }
 
+
+obsidianvim() {
+    ( cd ~/dev/obsidianvim/ && n home.md );
+}
 
 
 # Make completion case-insensitive
