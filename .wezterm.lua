@@ -96,9 +96,9 @@ config.max_fps = 120
 -- config.color_scheme = 'Cobalt Neon'
 -- config.color_scheme = 'Catppuccin Mocha (Gogh)'
 -- config.color_scheme = 'tokyonight'
-config.color_scheme = "Tokyo Night (Gogh)"
+-- config.color_scheme = "Tokyo Night (Gogh)"
 -- config.color_scheme = 'Tokyo Night Storm (Gogh)'
--- config.color_scheme = "Ros Pine (Gogh)"
+config.color_scheme = "Rosé Pine (Gogh)"
 config.colors = config.colors or {}
 
 -- coolnight colorscheme:
