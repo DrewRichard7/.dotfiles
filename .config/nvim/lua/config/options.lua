@@ -38,7 +38,7 @@ vo.backup = false
 vo.writebackup = false
 vo.swapfile = false
 vo.undofile = true
-vo.undodir = vim.fn.expand("~/nvim/undodir")
+vo.undodir = vim.fn.expand("~/.nvim/undodir")
 
 --performance
 vo.redrawtime = 10000

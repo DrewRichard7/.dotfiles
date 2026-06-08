@@ -2,8 +2,9 @@ local M = {}
 
 M.floating_state = { buf = -1, win = -1 }
 M.bottom_state = { buf = -1, win = -1 }
+M.right_state = { buf = -1, win = -1 }
 
-local ZSH = vim.env.SHELL or "zsh"
+local SHELL = vim.env.SHELL or "bash"
 
 local function is_valid_buf(buf)
 	return type(buf) == "number" and buf > 0 and vim.api.nvim_buf_is_valid(buf)
@@ -27,7 +28,7 @@ local function ensure_terminal_buf(state)
 
 	if vim.bo[state.buf].buftype ~= "terminal" then
 		vim.api.nvim_buf_call(state.buf, function()
-			vim.fn.jobstart({ ZSH, "--login", "-i" }, {
+			vim.fn.jobstart({ SHELL, "--login", "-i" }, {
 				term = true,
 			})
 		end)
@@ -70,6 +71,46 @@ local function create_bottom_window(buf)
 	})
 end
 
+local function ensure_opencode_buf(state)
+	if not is_valid_buf(state.buf) then
+		state.buf = create_scratch_buf()
+	end
+
+	if vim.bo[state.buf].buftype ~= "terminal" then
+		vim.api.nvim_buf_call(state.buf, function()
+			local cwd = vim.fn.getcwd()
+
+			vim.fn.jobstart({
+				SHELL,
+				"--login",
+				"-i",
+				"-c",
+				"opencode " .. vim.fn.shellescape(cwd),
+			}, {
+				term = true,
+			})
+		end)
+	end
+
+	return state.buf
+end
+
+local function create_right_window(buf)
+	local width = math.floor(vim.o.columns * 0.4)
+
+	vim.cmd("botright vertical " .. width .. "split")
+
+	local win = vim.api.nvim_get_current_win()
+	vim.api.nvim_win_set_buf(win, buf)
+
+	vim.wo[win].number = false
+	vim.wo[win].relativenumber = false
+	vim.wo[win].signcolumn = "no"
+	vim.wo[win].wrap = false
+
+	return win
+end
+
 function M.toggle_floating_terminal()
 	if is_valid_win(M.floating_state.win) then
 		vim.api.nvim_win_hide(M.floating_state.win)
@@ -91,6 +132,18 @@ function M.toggle_bottom_terminal()
 
 	local buf = ensure_terminal_buf(M.bottom_state)
 	M.bottom_state.win = create_bottom_window(buf)
+	vim.cmd("startinsert")
+end
+
+function M.toggle_right_terminal()
+	if is_valid_win(M.right_state.win) then
+		vim.api.nvim_win_close(M.right_state.win, false)
+		M.right_state.win = -1
+		return
+	end
+
+	local buf = ensure_opencode_buf(M.right_state)
+	M.right_state.win = create_right_window(buf)
 	vim.cmd("startinsert")
 end
 

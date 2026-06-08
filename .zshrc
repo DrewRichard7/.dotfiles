@@ -24,6 +24,7 @@ alias gss='git status --short'
 # functions
 shrc() { (cd ~/.dotfiles/ && nvim .zshrc); }
 resh() { source ~/.dotfiles/.zshrc && echo ".zshrc reloaded" && sleep 0.25 && clear; }
+tmuxrc() { cd .config/tmux/ && nvim tmux.conf; }
 gc() {
     git commit -m "$*"
 }
@@ -69,7 +70,7 @@ open() {
 
 n() {
   if [ "$#" -eq 0 ]; then
-    nvim .
+    nvim
   else
     nvim "$@"
   fi
@@ -82,6 +83,10 @@ nvimrc() {
 );
 }
 
+nvimrepo() {
+    cd ~/.dotfiles/.config/nvim || return && lsa;
+}
+
 ghosttyrc() {
     (cd ~/.dotfiles/.config/ghostty/
 
@@ -92,6 +97,10 @@ ghosttyrc() {
 
 obsidianvim() {
     ( cd ~/dev/obsidianvim/ && n home.md );
+}
+
+gemma() {
+    (ollama run gemma4:12b-mlx;)
 }
 
 
