@@ -4,7 +4,16 @@ M.floating_state = { buf = -1, win = -1 }
 M.bottom_state = { buf = -1, win = -1 }
 M.right_state = { buf = -1, win = -1 }
 
-local SHELL = vim.env.SHELL or "bash"
+local hostname = vim.fn.hostname()
+
+local function get_shell()
+	if hostname == "andrews-MacBook-Pro.local" then
+		return vim.env.SHELL or "zsh"
+	end
+	return vim.env.shell or "bash"
+end
+
+local SHELL = get_shell()
 
 local function is_valid_buf(buf)
 	return type(buf) == "number" and buf > 0 and vim.api.nvim_buf_is_valid(buf)

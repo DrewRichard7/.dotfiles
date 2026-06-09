@@ -23,15 +23,15 @@ start-at-login = true
 after-startup-command = [
     'workspace 1',
     'layout dwindle',
-    'exec-and-forget borders',
-    'exec-and-forget sketchybar'
+    # 'exec-and-forget borders',
+    # 'exec-and-forget sketchybar'
 ]
 
-exec-on-workspace-change = [
-    "/bin/bash",
-    "-c",
-    "sketchybar --trigger hyprspace_workspace_change"
-]
+# exec-on-workspace-change = [
+#     "/bin/bash",
+#     "-c",
+#     "sketchybar --trigger hyprspace_workspace_change"
+# ]
 
 # ╔═══════════════════════════════════════════════════════════════════════════════╗
 # ║                            DEFAULT LAYOUT SETTINGS                            ║
@@ -170,7 +170,7 @@ inner.vertical = 6
 outer.left = 4
 outer.bottom = 4
 outer.top = [
-  { monitor."DELL U2723QE" = 34 },
+  { monitor."DELL U2723QE" = 5 },
   { monitor."Built-in Retina Display" = 3 },
   25,
 ]
@@ -331,10 +331,10 @@ if.app-id = 'com.apple.FaceTime'
 run = 'layout floating'
 
 
-# # Make Messages float
-# [[on-window-detected]]
-# if.app-id = 'com.apple.MobileSMS'
-# run = 'layout floating'
+# Make Messages float
+[[on-window-detected]]
+if.app-id = 'com.apple.MobileSMS'
+run = 'layout floating'
 
 # # Make Slack float
 # [[on-window-detected]]
@@ -357,9 +357,9 @@ run = 'layout floating'
 # if.app-id = 'com.apple.Music'
 # run = 'layout floating'
 
-# # Make Finder float
-# [[on-window-detected]]
-# if.app-id = 'com.apple.finder'
-# run = 'layout floating'
+# Make Finder float
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = 'layout floating'
 
 

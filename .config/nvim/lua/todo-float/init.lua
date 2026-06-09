@@ -1,73 +1,76 @@
 local M = {}
 
--- helper function to resolve tilde to home directory
-local function expand_path(path)
-  if path:sub(1,1) == "~" then
-    return os.getenv("HOME") .. path:sub(2)
-  end
-  return path
-end
-
 local function center_in(outer, inner)
-  return (outer - inner) / 2
+	return math.floor((outer - inner) / 2)
 end
-
 
 local function win_config()
-  local width = math.min(math.floor(vim.o.columns * 0.8), 64)
-  local height = math.floor(vim.o.lines * 0.8)
-  return {
-    relative = "editor",
-    width = width,
-    height = height,
-    col = center_in(vim.o.columns, width),
-    row = center_in(vim.o.lines, height),
-    border = "single",
-  }
+	local width = math.min(math.floor(vim.o.columns * 0.8), 64)
+	local height = math.floor(vim.o.lines * 0.8)
+
+	return {
+		relative = "editor",
+		width = width,
+		height = height,
+		col = center_in(vim.o.columns, width),
+		row = center_in(vim.o.lines, height),
+		border = "rounded",
+	}
 end
 
-local function open_floating_file(target_file)
-  local expanded_path = expand_path(target_file)
+local function open_floating_file(path, missing_message)
+	local expanded_path = vim.fn.expand(path)
 
-  if vim.fn.filereadable(expanded_path) == 0 then
-    vim.notify("todo file does not exist at directory: " .. expanded_path, vim.log.levels.ERROR)
-    return
-  end
+	if vim.fn.filereadable(expanded_path) == 0 then
+		vim.notify(missing_message or ("file does not exist: " .. expanded_path), vim.log.levels.WARN)
+		return
+	end
 
-  local buf = vim.fn.bufnr(expanded_path, true)
+	local buf = vim.fn.bufadd(expanded_path)
+	vim.fn.bufload(buf)
 
-  if buf == -1 then
-    buf = vim.api.nvim_create_buf(false, false)
-    vim.api.nvim_buf_set_name(buf, expanded_path)
-  end
+	vim.bo[buf].swapfile = false
 
-  -- disable swapfile
-  vim.bo[buf].swapfile = false
+	vim.api.nvim_open_win(buf, true, win_config())
 
-  local win = vim.api.nvim_open_win(buf, true, win_config())
+	vim.keymap.set("n", "q", function()
+		if vim.api.nvim_get_option_value("modified", { buf = buf }) then
+			vim.notify("save your changes first", vim.log.levels.WARN)
+			return
+		end
 
-  vim.api.nvim_buf_set_keymap(buf, "n", "q", "", {
-    noremap = true,
-    silent = true,
-    callback = function()
-      if vim.api.nvim_get_option_value("modified", {buf = buf}) then
-        vim.notify("save your changes first", vim.log.levels.WARN)
-      else
-        vim.api.nvim_win_close(0,true)
-      end
-    end
-  })
+		vim.api.nvim_win_close(0, true)
+	end, {
+		buffer = buf,
+		silent = true,
+		desc = "Close todo float",
+	})
 end
 
-local function setup_user_commands(opts)
-  local target_file = opts.target_file or "todo.md"
-  vim.api.nvim_create_user_command("Todo", function()
-    open_floating_file(target_file)
-  end, {})
+function M.open_global()
+	open_floating_file("~/projects/todo.md", "global todo.md does not exist")
 end
 
-M.setup = function(opts)
-  setup_user_commands(opts)
+function M.open_local()
+	open_floating_file("./todo.md", "no project local todo.md")
+end
+
+function M.setup(opts)
+	opts = opts or {}
+
+	local global_file = opts.global_file or "~/projects/todo.md"
+
+	vim.api.nvim_create_user_command("TodoGlobal", function()
+		open_floating_file(global_file, "global todo.md does not exist")
+	end, {})
+
+	vim.api.nvim_create_user_command("TodoLocal", function()
+		open_floating_file("./todo.md", "no project local todo.md")
+	end, {})
+
+	vim.api.nvim_create_user_command("Todo", function()
+		open_floating_file(global_file, "global todo.md does not exist")
+	end, {})
 end
 
 return M

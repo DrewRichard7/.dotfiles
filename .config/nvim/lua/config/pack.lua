@@ -2,10 +2,10 @@ vim.pack.add({
 
 	-- lsp & completion
 	{ src = "https://github.com/Saghen/blink.cmp", version = "v1" },
-  { src = "https://github.com/hrsh7th/nvim-cmp.git" },
-  { src = "https://github.com/hrsh7th/cmp-nvim-lsp.git" },
-  { src = "https://github.com/hrsh7th/cmp-buffer.git" },
-  { src = "https://github.com/hrsh7th/cmp-path.git" },
+	{ src = "https://github.com/hrsh7th/nvim-cmp.git" },
+	{ src = "https://github.com/hrsh7th/cmp-nvim-lsp.git" },
+	{ src = "https://github.com/hrsh7th/cmp-buffer.git" },
+	{ src = "https://github.com/hrsh7th/cmp-path.git" },
 	{ src = "https://github.com/L3MON4D3/LuaSnip" },
 	{ src = "https://github.com/saadparwaiz1/cmp_luasnip" },
 	{ src = "https://github.com/rafamadriz/friendly-snippets" },
@@ -14,12 +14,14 @@ vim.pack.add({
 	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" },
 	{ src = "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim" },
 	{ src = "https://github.com/folke/lazydev.nvim" },
+	{ src = "https://github.com/ThePrimeagen/99.git" },
 
 	-- ui
 	{ src = "https://github.com/j-hui/fidget.nvim.git" },
-	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version="main" },
+	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
 	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
 	{ src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
+	{ src = "https://github.com/mrjones2014/smart-splits.nvim" }, -- for wezterm multiplexing
 
 	-- formatting & editor
 	{ src = "https://github.com/stevearc/conform.nvim" },
@@ -31,7 +33,7 @@ vim.pack.add({
 
 	-- fff file search
 	{ src = "https://github.com/dmtrKovalenko/fff.nvim" },
-  -- Snacks - github PRs.
+	-- Snacks - github PRs.
 	{ src = "https://github.com/folke/snacks.nvim.git" },
 
 	-- misc plugins
@@ -60,6 +62,6 @@ vim.pack.add({
 	{ src = "https://github.com/EdenEast/nightfox.nvim.git", name = "nordfox" }, -- Nord
 	{ src = "https://github.com/ribru17/bamboo.nvim.git", name = "bamboo" }, -- Osaka-jade
 	{ src = "https://github.com/olivercederborg/poimandres.nvim.git", name = "poimandres" }, -- Temerald
-  { src = "https://github.com/bjarneo/vantablack.nvim" }, -- Vantablack
-  { src = "https://github.com/xero/miasma.nvim.git" }, -- miasma
+	{ src = "https://github.com/bjarneo/vantablack.nvim" }, -- Vantablack
+	{ src = "https://github.com/xero/miasma.nvim.git" }, -- miasma
 })

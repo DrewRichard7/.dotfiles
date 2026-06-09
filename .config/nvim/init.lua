@@ -2,5 +2,5 @@
 require("config.init")
 require("plugins.init")
 require("todo-float").setup({
-	target_file = "~/projects/todo.md",
+	global_file = "~/projects/todo.md",
 })

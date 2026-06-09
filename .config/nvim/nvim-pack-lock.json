@@ -1,5 +1,9 @@
 {
   "plugins": {
+    "99": {
+      "rev": "4d229141546290746c82ac90f5afc2786865b5f3",
+      "src": "https://github.com/ThePrimeagen/99.git"
+    },
     "LuaSnip": {
       "rev": "0abc8f390b278c3b4aabc4c004ac8a088b65cf24",
       "src": "https://github.com/L3MON4D3/LuaSnip"
@@ -70,7 +74,7 @@
       "src": "https://github.com/everviolet/nvim.git"
     },
     "fff.nvim": {
-      "rev": "1e055f9d7b94f33a7f393ac95e779bed72650d56",
+      "rev": "535b44374e02049a5f35d9daebc15f66bba2cfaf",
       "src": "https://github.com/dmtrKovalenko/fff.nvim"
     },
     "fidget.nvim": {
@@ -134,7 +138,7 @@
       "src": "https://github.com/xero/miasma.nvim.git"
     },
     "mini.nvim": {
-      "rev": "cbae4fa396bbf9c802b3d2dc2e9c5362e8fb9468",
+      "rev": "ff8b3580935818ef2f21bdd651f057a2ae071eab",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "neovim": {
@@ -158,7 +162,7 @@
       "src": "https://github.com/hrsh7th/nvim-cmp.git"
     },
     "nvim-lspconfig": {
-      "rev": "229b79051b380377664edc4cbd534930154921a1",
+      "rev": "ed19590a3a9792901553c388d1aadafce012f80d",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-notify": {
@@ -169,6 +173,10 @@
       "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
+    },
+    "nvim-treesitter-textobjects": {
+      "rev": "851e865342e5a4cb1ae23d31caf6e991e1c99f1e",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
     },
     "nvim-web-devicons": {
       "rev": "dfbfaa967a6f7ec50789bead7ef87e336c1fa63c",
@@ -197,6 +205,10 @@
     "rose-pine": {
       "rev": "ff483051a47e27d84bdef47703538df1ed9f4a47",
       "src": "https://github.com/rose-pine/neovim.git"
+    },
+    "smart-splits.nvim": {
+      "rev": "6806149fd36d1c5e797debe3e18b2c07219b685a",
+      "src": "https://github.com/mrjones2014/smart-splits.nvim.git"
     },
     "smear-cursor.nvim": {
       "rev": "9e9378d6ee34bb3782e0e8c63d9ec8ca618b479b",

@@ -1,6 +1,6 @@
 require("flash").setup({})
 
-vim.keymap.set({ "n", "x", "o" }, "z", function()
+vim.keymap.set({ "n", "x", "o" }, "<leader>z", function()
 	require("flash").jump()
 end, { desc = "Flash" })
 

@@ -1,3 +1,5 @@
 # Machine local theme overrides
 lua/config/local_theme.lua
 
+# temp files -- mostly created by 99
+tmp/
