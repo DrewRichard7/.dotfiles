@@ -2,4 +2,4 @@
 bash_path= "/opt/homebrew/bin/bash"
 
 [whitelist]
-prefix = ["/Users/andrew/dev/"]
+prefix = ["/Users/andrew/"]
