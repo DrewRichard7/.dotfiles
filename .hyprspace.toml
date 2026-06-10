@@ -336,6 +336,12 @@ run = 'layout floating'
 if.app-id = 'com.apple.MobileSMS'
 run = 'layout floating'
 
+# TODO
+# # Make facetime float
+# [[on-window-detected]]
+# if.app-id = 'com.apple.MobileSMS'
+# run = 'layout floating'
+
 # # Make Slack float
 # [[on-window-detected]]
 # if.app-id = 'com.tinyspeck.slackmacgap'
