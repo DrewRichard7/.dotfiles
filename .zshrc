@@ -59,6 +59,7 @@ alias claer='clear'
 alias clare='clear'
 
 alias repo='gh-repo-webapp'
+alias c='opencode'
 
 alias python='python3'
 alias ei='exit'
@@ -156,6 +157,16 @@ archive-dotfiles() {
     mkdir -p ~/.dotfiles
     echo ".dotfiles directory created. you need to create github ssh credentials and clone .dotfiles from ham-munculus"
   fi
+}
+
+prune-branches() {
+    git fetch --prune || return
+
+    git branch -vv |
+        awk '/: gone]/{print $1}' |
+        while read -r branch; do
+            git branch -d "$branch"
+        done
 }
 
 # ===========================================================

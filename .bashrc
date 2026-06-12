@@ -236,6 +236,19 @@ tdl() {
   tmux select-pane -t "$editor_pane"
 }
 
+
+prune-branches() {
+    git fetch --prune || return
+
+    git branch -vv |
+        awk '/: gone]/{print $1}' |
+        while read -r branch; do
+            git branch -d "$branch"
+        done
+}
+
+
+
 # ===========================================================
 # Bash completion
 # ===========================================================

@@ -23,7 +23,7 @@ start-at-login = true
 after-startup-command = [
     'workspace 1',
     'layout dwindle',
-    # 'exec-and-forget borders',
+    'exec-and-forget borders',
     # 'exec-and-forget sketchybar'
 ]
 
@@ -335,12 +335,6 @@ run = 'layout floating'
 [[on-window-detected]]
 if.app-id = 'com.apple.MobileSMS'
 run = 'layout floating'
-
-# TODO
-# # Make facetime float
-# [[on-window-detected]]
-# if.app-id = 'com.apple.MobileSMS'
-# run = 'layout floating'
 
 # # Make Slack float
 # [[on-window-detected]]
