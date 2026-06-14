@@ -1,8 +1,8 @@
 # Dynamic theme colors
 # config-file = ?"~/.config/omarchy/current/theme/ghostty.conf"
 
-background-opacity = 0.95
-background-blur = 20
+# background-opacity = 0.95
+# background-blur = 20
 
 # theme
 # theme = Wez
@@ -15,7 +15,7 @@ background-blur = 20
 
 # theme = Kanagawa Wave
 
-theme = TokyoNight Night
+# theme = TokyoNight Night
 
 # theme = yukinord
 
