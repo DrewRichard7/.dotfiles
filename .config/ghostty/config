@@ -46,7 +46,7 @@ window-save-state = always
 # Cursor styling
 cursor-style = "block"
 cursor-style-blink = false
-shell-integration-features = ssh-terminfo,ssh-env,no-cursor
+# shell-integration-features = ssh-terminfo,ssh-env,no-cursor
 
 # Keyboard bindings
 keybind = f11=toggle_fullscreen
